@@ -136,7 +136,7 @@ var saveButton = $("button");
 
 // We then create an empty array containing an object representing each hour block, with a blank task.
 // We will be setting and getting this array from local storage to save and display tasks.
-var storedTasks = [
+var stored = [
   {
     hourBlock: 9,
     task: "",
@@ -209,40 +209,39 @@ $(saveButton).click(function (event) {
   // find the index of the parent hour block in the schedule (very important!)
   var textAreaIndex = $(element).parent().index();
 
-  // see if there is an array in local storage. If not, then add the saved task to the stored tasks array and save it to local storage.
-  if (localStorage.getItem("storedTasks") === null) {
-    // Since the storedTasks array has the same number of indexes as the schedule (which contains the hour blocks)
+ if (localStorage.getItem(stored) === null) {
+    // Since the stored array has the same number of indexes as the schedule (which contains the hour blocks)
     // value of the index of the hour block to set the appropriate task in stored tasks.
-    storedTasks[textAreaIndex].task = $.trim(textAreaInput);
-    localStorage.setItem("storedTasks", JSON.stringify(storedTasks));
+    stored[textAreaIndex].task = $.trim(textAreaInput);
+    localStorage.setItem(stored, JSON.stringify(stored));
 
     // If  stored array, retreive from storage, add and save to local storage
   } else {
-    storedTasks = JSON.parse(localStorage.getItem("storedTasks"));
-    storedTasks[textAreaIndex].task = $.trim(textAreaInput);
-    $(textArea).val(storedTasks[textAreaIndex].task);
-    localStorage.setItem("storedTasks", JSON.stringify(storedTasks));
+    stored = JSON.parse(localStorage.getItem(stored));
+    stored[textAreaIndex].task = $.trim(textAreaInput);
+    $(textArea).val(stored[textAreaIndex].task);
+    localStorage.setItem(stored, JSON.stringify(stored));
   }
 });
 
 //get stored tasks on page reload
-function getStoredTasks() {
-  if (localStorage.getItem("storedTasks") !== null) {
+function getStored() {
+  if (localStorage.getItem(stored) !== null) {
     for (i = 0; i <= totalHours; i++) {
       var hourBlockTextarea = $("#schedule").children()[i];
-      storedTasks = JSON.parse(localStorage.getItem("storedTasks"));
+      stored = JSON.parse(localStorage.getItem(stored));
 
-      $(hourBlockTextarea).find("textarea").val(storedTasks[i].task);
+      $(hourBlockTextarea).find("textarea").val(stored[i].task);
     }
   }
 }
-getStoredTasks();
+getStored();
 
 // A helper function which resets the stored tasks array back to its blank state. If the user has not saved
 // a task before, it will alert them that they have to save a task.
 function clearStoredTasks() {
-  if (localStorage.getItem("storedTasks") !== null) {
-    storedTasks = [
+  if (localStorage.getItem(stored) !== null) {
+    stored = [
       {
         hourBlock: 9,
         task: "",
@@ -280,7 +279,7 @@ function clearStoredTasks() {
         task: "",
       },
     ];
-    localStorage.setItem("storedTasks", JSON.stringify(storedTasks));
+    localStorage.setItem(stored, JSON.stringify(stored));
   } else {
     window.alert("You have not saved any tasks!");
   }
@@ -290,7 +289,7 @@ function clearStoredTasks() {
 $("#clear-stored-tasks").click(function (event) {
   event.preventDefault();
   var confirmClear = window.confirm(
-    "This will clear all of the tasks for today. To clear tasks for one hour, simply erase the task and save. Are you sure you want to continue?"
+    "This will clear all of the tasks for today. Are you sure you want to continue?"
   );
   if (confirmClear) {
     clearStoredTasks();
