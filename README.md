@@ -6,15 +6,18 @@ This is the homework challenge for week 5 day scheduler.  This assignment uses D
 
 <h2>
 Deployed Link:<hr>
+https://coderchrisdean.github.io/myworkscheduler/
 </h2>
 
 <h2>
 Github Repo:<hr>
 </h2>
+https://github.com/coderchrisdean/myworkscheduler
 
 <h2>
 Image of Completed Project:
-</h2>
+</h2><hr>
+<img src="./assets/images/05-third-party-apis-homework-demo.gif">
 
 # 05 Third-Party APIs: Work Day Scheduler
 
