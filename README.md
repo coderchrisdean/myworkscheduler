@@ -1,3 +1,21 @@
+<h2>
+Welcome!
+</h2>
+<hr>
+This is the homework challenge for week 5 day scheduler.  This assignment uses DayJs library: https://day.js.org/en/.
+
+<h2>
+Deployed Link:<hr>
+</h2>
+
+<h2>
+Github Repo:<hr>
+</h2>
+
+<h2>
+Image of Completed Project:
+</h2>
+
 # 05 Third-Party APIs: Work Day Scheduler
 
 ## Your Task
@@ -35,7 +53,7 @@ THEN the saved events persist
 The following animation demonstrates the application functionality:
 
 <!-- @TODO: create ticket to review/update image) -->
-![A user clicks on slots on the color-coded calendar and edits the events.](./Assets/05-third-party-apis-homework-demo.gif)
+![A user clicks on slots on the color-coded calendar and edits the events.](./assets/images/05-third-party-apis-homework-demo.gif)
 
 ## Grading Requirements
 
